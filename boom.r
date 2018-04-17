@@ -231,3 +231,30 @@ p_tile <- p + geom_tile(aes(fill = births_pct_day), color = "white") + labs(x = 
 pdf("figures/births_monthly_tile.pdf", width = 12, height = 8)
 print(p_tile)
 dev.off()
+
+
+### Vertical Tile
+p <- ggplot(subset(boom, date >= as.Date(start_date) & date <= as.Date(end_date)),
+            aes(x = factor(month,
+                           levels = c(1:12),
+                           labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"),
+                           ordered = TRUE),
+                y = factor(year, levels = rev(unique(year)), ordered = TRUE)))
+
+p_tile <- p + geom_tile(aes(fill = births_pct_day), color = "white") +
+    scale_x_discrete(position = "top") +
+    scale_y_discrete(breaks = seq(1940, 1990, 5)) +
+    scale_fill_viridis(option = "inferno") +
+    facet_wrap(~ country, ncol = 2, strip.position = "bottom") +
+    labs(x = "", y = "", fill = "",
+         subtitle = "Average births per million people per day") +
+    theme(legend.position = "top",
+          legend.justification = "left",
+          axis.text.x = element_text(size = rel(0.6)),
+          strip.text = element_text(size = 12, face = "bold"),
+          plot.title = element_text(face = "bold", size = rel(2)),
+          plot.caption = element_text(size = 6))
+
+pdf("figures/births_monthly_tile_vert.pdf", width = 5, height = 8)
+print(p_tile)
+dev.off()
