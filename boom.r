@@ -204,8 +204,7 @@ dev.off()
 
 
 
-
-###----------------------------------------
+###--------------------------------------------------
 ### Tiles
 ###--------------------------------------------------
 
@@ -232,8 +231,9 @@ pdf("figures/births_monthly_tile.pdf", width = 12, height = 8)
 print(p_tile)
 dev.off()
 
-
+###--------------------------------------------------
 ### Vertical Tile
+### --------------------------------------------------
 p <- ggplot(subset(boom, date >= as.Date(start_date) & date <= as.Date(end_date)),
             aes(x = factor(month,
                            levels = c(1:12),
