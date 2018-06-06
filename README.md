@@ -1,6 +1,8 @@
 # Visualizing the Baby Boom
 
-## @kjhealy
+## Kieran Healy (@kjhealy)
+
+Code and data to accompany [Visualizing the Baby Boom](http://journals.sagepub.com/doi/pdf/10.1177/2378023118777324), *Socius* 4: 1–2, 2018.
 
 Blog post: https://kieranhealy.org/blog/archives/2018/04/10/visualizing-the-baby-boom/
 
